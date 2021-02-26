@@ -1,17 +1,48 @@
 package com.revature.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "employees")
 public class Employee {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "empId")
 	private int empId;
-	private int supervisorId;
+	
+	@JoinColumn(name = "supervisorId")
+	@ManyToOne
+	private Employee supervisor;
+	
+	@Column(name = "emp_type")
 	private int type;
+	
+	@Column(name = "firstName")
 	private String firstName;
+	
+	@Column(name = "lastName")
 	private String lastName;
-	private String userName;
+	
+	@Column(name = "username")
+	private String username;
+	
+	@Column(name = "emp_password")
 	private String password;
+	
+	@Column(name = "email")
 	private String email;
+	
+	@Column(name = "phoneNum")
 	private String phoneNumber;
+	
+	@Column(name = "street")
 	private String street;
+	
+	@Column(name = "city")
 	private String city;
+	
+	@Column(name = "state")
 	private String state;
 	
 	public Employee() {
@@ -19,15 +50,16 @@ public class Employee {
 	
 	}
 
-	public Employee(int empId, int supervisorId, int type, String firstName, String lastName, String userName,
+	
+	public Employee(int empId, Employee supervisor, int type, String firstName, String lastName, String username,
 			String password, String email, String phoneNumber, String street, String city, String state) {
 		super();
 		this.empId = empId;
-		this.supervisorId = supervisorId;
+		this.supervisor = supervisor;
 		this.type = type;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.userName = userName;
+		this.username = username;
 		this.password = password;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
@@ -35,6 +67,27 @@ public class Employee {
 		this.city = city;
 		this.state = state;
 	}
+
+
+
+
+	public Employee(Employee supervisor, int type, String firstName, String lastName, String username,
+			String password, String email, String phoneNumber, String street, String city, String state) {
+		super();
+		this.supervisor = supervisor;
+		this.type = type;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.street = street;
+		this.city = city;
+		this.state = state;
+	}
+	
+	
 
 	public int getEmpId() {
 		return empId;
@@ -44,12 +97,12 @@ public class Employee {
 		this.empId = empId;
 	}
 
-	public int getSupervisorId() {
-		return supervisorId;
+	public Employee getSupervisor() {
+		return supervisor;
 	}
 
-	public void setSupervisorId(int supervisorId) {
-		this.supervisorId = supervisorId;
+	public void setSupervisorId(Employee supervisor) {
+		this.supervisor = supervisor;
 	}
 
 	public int getType() {
@@ -77,11 +130,11 @@ public class Employee {
 	}
 
 	public String getUserName() {
-		return userName;
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUserName(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
@@ -132,13 +185,14 @@ public class Employee {
 		this.state = state;
 	}
 
+
 	@Override
 	public String toString() {
-		return "Employee [empId=" + empId + ", supervisorId=" + supervisorId + ", type=" + type + ", firstName="
-				+ firstName + ", lastName=" + lastName + ", userName=" + userName + ", password=" + password
-				+ ", email=" + email + ", phoneNumber=" + phoneNumber + ", street=" + street + ", city=" + city
-				+ ", state=" + state + "]";
+		return "Employee [empId=" + empId + ", supervisor=" + supervisor + ", type=" + type + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", username=" + username + ", password=" + password + ", email=" + email
+				+ ", phoneNumber=" + phoneNumber + ", street=" + street + ", city=" + city + ", state=" + state + "]";
 	}
+
 	
 	
 

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>TRMS|Login</title>
-    <link rel="stylesheet" href="./trms.css">
+    <link rel="stylesheet" href="./Styles/index.css" type="text/css">
 </head>
 
 <body>
@@ -14,7 +14,7 @@
             <h1>Welcome to TRMS</h1>
         </div>
         <div>
-            <form>
+            <form method="post" action="/TRMS/api/login">
                 <lable for="username"><b>Username:</b></lable>
                 <br>
                 <input type="text" id="username" name="username" placeholder="username" required>
@@ -32,7 +32,9 @@
             </form>
         </div>
     </div>
-
+    
+    <script src="./JavaScript/validateAccount.js"></script>
+    
 </body>
 
 </html>

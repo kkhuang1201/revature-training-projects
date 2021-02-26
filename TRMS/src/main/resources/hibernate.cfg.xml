@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<!-- SQL Dialect -->
+		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+		
+		<!-- Database Connection Settings -->
+		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+		<property name="hibernate.connection.url"></property>
+		<property name="hibernate.connection.username"></property>
+		<property name="hibernate.connection.password"></property>
+	 
+		<!-- Connection Pool Size (built-in) -->
+		<property name="hibernate.connection.pool_size">5</property>
+	 
+		<!-- show all generate SQL query -->
+		<property name="show_sql">true</property>
+	 	
+	 	<!-- We can run Hibernate in 4 different modes: create, update, create drop, and validate.
+	 	create: Hibernate will purge the existing tables in your DB and create the tables from scratch.
+	 	
+	 	update:Hibernate will connect to an existing database and that are not consistent with our mapped Java models.
+	 	
+	 	create drop: Hibernate creates all of the tables and then drops them when the application stops running. 
+	 	This is good for testing purpose but not ideal in production.
+	 	
+	 	validate: Hibernate will validate a pre-existing schema. 
+	 	This means that it will make sure that your Java models are mapped in a way that is consistent with the existing chema.
+	 	
+	 	 -->
+		<!-- Drop the existing tables and create new one --> 
+		<property name="hbm2ddl.auto">validate</property>
+		
+		<property name="hibernate.current_session_context_class">thread</property>
+	 	
+		<!-- Mention here all the model classes along with their package name --> 
+		<mapping class="com.revature.model.Employee"/>
+		<mapping class="com.revature.model.Application"/>
+	</session-factory> 
+</hibernate-configuration>
