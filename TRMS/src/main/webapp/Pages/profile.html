@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>TRMS HOME PAGE</title>
+	<link rel="stylesheet" href="../Styles/index.css" type="text/css">
+	<link rel="stylesheet" href="../Styles/home.css" type="text/css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+	<!------------------------------Nav bar-------------------->
+	<header>
+		<div class="navbar">
+			<a href="home.html">Home</a>
+			<div class="dropdown">
+				<button class="dropbtn">Reimbursement
+					<i class="fa fa-caret-down"></i>
+				</button>
+				<div class="dropdown-content">
+					<a href="submitNew.html">Submit New</a>
+					<a href="viewHistory.html">View History</a>
+					<a href="manageRequest.html" id="manageRequest">Manage Request</a>
+					<a href="viewResolvedRequest.html" id="viewResolvedRequest">View Resolved Request</a>
+				</div>
+			</div>
+			<a href="./register.html" id="register">Register New Employee</a>
+			<div class="dropdown" id="dropdownaccount">
+				<button class="dropbtn" id="accountname">Account
+					<i class="fa fa-caret-down"></i>
+				</button>
+				<div class="dropdown-content">
+					<a href="profile.html" id=profileBtn>Profile</a>
+					<a href="../index.html">Logout</a>
+
+				</div>
+			</div>
+		</div>
+	</header>
+	<div class="dashboard">
+		<h1>Dashboard</h1>
+		<h3 id="title">Title</h3>
+	</div>
+	<!------------------------------Update Profile-------------------->
+	<div class="allForm" id="profileDiv">
+		<form method="post" action="/TRMS/api/updateProfile" id="profile">
+			<h2>Employee Profile</h2>
+			<br><br>
+			<lable for="firstName"><b>First Name:</b></lable>
+			<input type="text" id="firstName" name="firstName" value="First Name" required>
+			<br><br>
+			<label for="lastName"><b>Last Name:</b></label>
+			<input type="text" id="lastName" name="lastName" value="Last Name" required>
+			<br><br>
+			<lable for="username"><b>Username:</b></lable>
+			<input disabled type="text" id="username" name="username" value="Username" required>
+			<br><br>
+			<label for="password"><b>Password:</b></label>
+			<input type="password" id="password" name="password" value="Password" required>
+			<br><br>
+			<lable for="email"><b>Email:</b></lable>
+			<input type="email" id="email" name="email" value="Email" required>
+			<br><br>
+			<label for="phoneNumber"><b>Phone Number:</b></label>
+			<input type="tel" id="phoneNumber" name="phoneNumber" value="Phone Number" required>
+			<br><br>
+			<lable for="street"><b>Street:</b></lable>
+			<input type="text" id="street" name="street" value="Street" required>
+			<br><br>
+			<label for="city"><b>City:</b></label>
+			<input type="text" id="city" name="city" value="City" required>
+			<br><br>
+			<label for="state"><b>State:</b></label>
+			<input type="text" id="state" name="state" value="State" required>
+			<br><br><br><br><br><br>
+            <ul>
+                <li><button type="submit" id="RegisterEmployee">Update</button></li>
+                <li><a href="home.html">Cancel</a></li>
+            </ul>
+			<br><br>
+		</form>
+	</div>
+	<script type="text/javascript" src="../JavaScript/home.js"></script>
+</body>
+
+
+</html>

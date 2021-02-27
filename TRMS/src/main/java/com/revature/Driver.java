@@ -15,14 +15,14 @@ public class Driver {
 		EmployeeService employeeService = new EmployeeService();
 		ApplicationService applicationService = new ApplicationService();
 		System.out.println(employeeService.getEmployeeById(2));
-	Employee newEmployee = new Employee(employeeService.getEmployeeById(4), 1, "zen", "Huang", "zen123",
+		Employee newEmployee = new Employee(employeeService.getEmployeeById(4), 2, "Tom", "Cat", "abc123",
 			"password", "kennyhuang@gmail.com", "123456789", "2021 abc street", "Brooklyn", "NY"); 
 //	
-//		employeeService.add(newEmployee);
+		employeeService.add(newEmployee);
 		//Employee e = employeeService.getEmployeeById(1);
 		//System.out.println(e);
 		
-		employeeService.delete(newEmployee);
+		//employeeService.delete(newEmployee);
 		
 		//System.out.println(employeeService.getAllEmployees());
 		//System.out.println(employeeService.getEmployeeById(1));

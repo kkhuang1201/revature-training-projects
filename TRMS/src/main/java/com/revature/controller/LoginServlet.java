@@ -31,19 +31,19 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("I am inside of LoginServlet!");
-		HttpSession session = request.getSession();
-		PrintWriter write = response.getWriter();
-		
-		String username = (String) session.getAttribute("username");
-		System.out.println(username);
-		EmployeeService service = new EmployeeService();
-		Employee employee = service.getEmployeeByUsername(username);
-		System.out.println(employee);
-		
-		ObjectMapper objectMapper = new ObjectMapper();
-		final String JSON = objectMapper.writeValueAsString(employee);
-		write.write(JSON);
+//		System.out.println("I am inside of LoginServlet!");
+//		HttpSession session = request.getSession();
+//		PrintWriter write = response.getWriter();
+//		
+//		String username = (String) session.getAttribute("username");
+//		System.out.println(username);
+//		EmployeeService service = new EmployeeService();
+//		Employee employee = service.getEmployeeByUsername(username);
+//		System.out.println(employee);
+//		
+//		ObjectMapper objectMapper = new ObjectMapper();
+//		final String JSON = objectMapper.writeValueAsString(employee);
+//		write.write(JSON);
 	}
 
 	/**

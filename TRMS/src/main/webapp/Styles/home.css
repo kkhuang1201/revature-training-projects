@@ -30,8 +30,7 @@ header{
 
   #dropdownaccount{
     float:right;
-    overflow: hidden; 
-    padding-left: 20px; 
+    overflow: hidden;  
   }
   
   /* Dropdown button */
@@ -41,6 +40,7 @@ header{
     outline: none;
     color: white;
     padding: 14px 16px;
+    width: 150px;
     background-color: inherit;
     font-family: inherit; /* Important for vertical align on mobile phones */
     margin: 0; /* Important for vertical align on mobile phones */
@@ -93,3 +93,49 @@ header{
   h1,h3{
     color: rgb(94, 75, 75);
   }
+
+  /*------------------All Form----------*/
+  .allForm{
+    display: block;
+  }
+  .allForm input{
+    float:right
+  }
+
+  .allForm button{
+    margin: 0 auto;
+    display: block;
+  }
+ h2{
+   text-align: center;
+   color: brown;
+ }
+
+ .allForm ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.allForm li {
+  margin: auto;
+}
+
+.allForm li a {
+  border: none;
+  border-color:rgb(7, 7, 7);
+  background-color: rgb(241, 184, 163);
+  border-radius: 20px;
+  
+}
+
+/*----------------Profile Form-------------*/
+#profileForm{
+  display: none;
+}
+::value{
+  color: rgb(5, 2, 2);
+  font-family:sans-serif;
+  font-weight: bold;
+}
