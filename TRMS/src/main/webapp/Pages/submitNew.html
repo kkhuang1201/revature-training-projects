@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>TRMS HOME PAGE</title>
+	<link rel="stylesheet" href="../Styles/index.css" type="text/css">
+	<link rel="stylesheet" href="../Styles/home.css" type="text/css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+	<!------------------------------Nav bar-------------------->
+	<header>
+		<div class="navbar">
+			<a href="home.html">Home</a>
+			<div class="dropdown">
+				<button class="dropbtn">Reimbursement
+					<i class="fa fa-caret-down"></i>
+				</button>
+				<div class="dropdown-content">
+					<a href="submitNew.html">Submit New</a>
+					<a href="viewHistory.html">View History</a>
+					<a href="manageRequest.html" id="manageRequest">Manage Request</a>
+					<a href="viewResolvedRequest.html" id="viewResolvedRequest">View Resolved Request</a>
+				</div>
+			</div>
+			<a href="register.html" id="register">Register New Employee</a>
+			<a href="viewAllEmployees.html" id="viewEmployees">View Employees</a> 
+			<div class="dropdown" id="dropdownaccount">
+				<button class="dropbtn" id="accountname">Account
+					<i class="fa fa-caret-down"></i>
+				</button>
+				<div class="dropdown-content">
+					<a href="profile.html" id=profileBtn>Profile</a>
+					<a href="../index.html">Logout</a>
+
+				</div>
+			</div>
+		</div>
+	</header>
+	<div class="dashboard">
+		<h1>Dashboard</h1>
+		<h3 id="title">Title</h3>
+	</div>
+	<!------------------------------Submit Reimbursement-------------------->
+
+    <div class="allForm" id="reimbursementFormDiv">
+		<form method="post" action="/TRMS/api/submitNew">
+			<h2>Tuition Reimbursement Form</h2>
+			<br><br>
+			<lable for="startDate"><b>Event Start:</b></lable>
+			<input type="date" id="startDate" name="startDate" placeholder="Start Date" required>
+			<br><br>
+			<label for="endDate"><b>Event End:</b></label>
+			<input type="date" id="endDate" name="endDate" placeholder="End Date" required>
+			<br><br>
+			<lable for="location"><b>Event Location:</b></lable>
+			<input type="text" id="location" name="location" placeholder="location" required>
+			<br><br>
+			<label for="description"><b>Description:</b></label><br>
+			<textarea id="descriptionArea" name="description"></textarea>
+			<br><br>
+			<lable for="cost"><b>Cost:</b></lable>
+			<input type="text" id="cost" name="cost" placeholder="" required>
+			<br><br><br><br><br><br>
+            <ul>
+                <li><button type="submit" id="submitReim">Submit</button></li>
+                <li><a href="home.html">Cancel</a></li>
+            </ul>
+			<br><br>
+		</form>
+	</div>
+	<script type="text/javascript" src="../JavaScript/home.js"></script>
+</body>
+
+</html>

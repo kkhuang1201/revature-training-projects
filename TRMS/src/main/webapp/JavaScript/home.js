@@ -62,9 +62,11 @@ function displayName() {
                     let registerbtn = document.querySelector('#register')
                     let manageRequestbtn = document.querySelector('#manageRequest')
                     let viewResolvedbtn = document.querySelector('#viewResolvedRequest')
+                    let viewEmployeesbtn = document.querySelector('#viewEmployees')
                     registerbtn.style.display = 'none'
                     manageRequestbtn.style.display = 'none'
                     viewResolvedbtn.style.display = 'none'
+                    viewEmployeesbtn.style.display = 'none'
                 }
             }
 
@@ -78,10 +80,125 @@ function displayName() {
 }
 
 
+function loadEmployees(){
+    console.log('I am inside of loadEmployees')
+    let url = 'http://localhost:8080/TRMS/api/getEmployees'
+    let tbody = document.getElementById('emplTableData')
+    console.log(tbody)
+    if(tbody){
+        console.log('tbody is selected')
+        let xhr = new XMLHttpRequest()
+
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState===4 && xhr.status ===200){
+                let employees = JSON.parse(xhr.response)
+                console.log(employees)
+
+                for(let e of employees){
+
+                    //Create the new elements chich should be appended to the table
+                    let tr = document.createElement('tr')
+                    let id = document.createElement('td')
+                    let name = document.createElement('td')
+                    let title = document.createElement('td')
+                    let email = document.createElement('td')
+                    let manager = document.createElement('td')
+
+                    //Fill out td elements with the data
+                    id.innerHTML = e['empId']
+                    name.innerHTML = e['firstName'] + ' ' + e['lastName']
+                    if(e['type'] == 1){
+                        title.innerHTML = 'Manager'
+                    }else{
+                        title.innerHTML = 'Employee'
+                    }
+                    email.innerHTML = e['email']
+                    if(e['supervisor']){
+                        manager.innerHTML =e['supervisor']['firstName'] + ' ' + e['supervisor']['lastName']
+                    }
+                    else{
+                        manager.innerHTML = "NONE"
+                        
+                    }
+                   
+
+                    //Add elements to the table
+                    tr.append(id)
+                    tr.append(name)
+                    tr.append(title)
+                    tr.append(email)
+                    tr.append(manager)
+                    tbody.append(tr)
+                }
+            }
+        }
+
+        xhr.open('GET',url)
+        xhr.send()
+    }
+}
+
+
+function loadMyApplications(){
+    console.log('I am inside of loadMyapplications')
+    let url = 'http://localhost:8080/TRMS/api/getMyApplications'
+    let tbody = document.getElementById('myReimTableData')
+    console.log(tbody)
+    if(tbody){
+        console.log('tbody is selected')
+        let xhr = new XMLHttpRequest()
+
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState===4 && xhr.status ===200){
+                let applications = JSON.parse(xhr.response)
+                console.log(applications)
+
+                for(let a of applications){
+
+                    //Create the new elements chich should be appended to the table
+                    let tr = document.createElement('tr')
+                    let id = document.createElement('td')
+                    let amount = document.createElement('td')
+                    let submitTime = document.createElement('td')
+                    let status = document.createElement('td')
+                    let manager = document.createElement('td')
+                    //Fill out td elements with the data
+                    id.innerHTML = a['applicationId']
+                    amount.innerHTML = a['cost']
+                    var n = new Date(a['submitedDate'] )
+                    var d = n.toLocaleDateString()
+                    submitTime.innerHTML = d + ' ' + a['submitedTime']
+ 
+                    if(a['status'] == 1){
+                        status.innerHTML = 'Pendding'
+                    }else if(a['status' == 2]){ 
+                        status.innerHTML = 'Accepted'
+                    }else{
+                        status.innerHTML = 'Rejected'
+                    }
+                    manager.innerHTML = a['applicant']['supervisor']['firstName'] + ' ' + a['applicant']['supervisor']['lastName']
+                    
+                    //Add elements to the table
+                    tr.append(id)
+                    tr.append(amount)
+                    tr.append(submitTime)
+                    tr.append(status)
+                    tr.append(manager)
+                    tbody.append(tr)
+                }
+            }
+        }
+
+        xhr.open('GET',url)
+        xhr.send()
+    }
+}
 
 window.onload = () => {
     displayName()
     loadProfile()
+    loadEmployees()
+    loadMyApplications()
 }
 
 

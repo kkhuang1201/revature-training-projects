@@ -8,7 +8,6 @@ import javax.persistence.TypedQuery;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 
 import com.revature.model.Employee;
 import com.revature.util.HibernateSessionFactory;

@@ -93,13 +93,13 @@ public class Application {
 
 
 
-	public Employee getApplicantId() {
+	public Employee getApplicant() {
 		return applicant;
 	}
 
 
 
-	public void setApplicantId(Employee applicant) {
+	public void setApplicant(Employee applicant) {
 		this.applicant = applicant;
 	}
 
@@ -197,6 +197,84 @@ public class Application {
 
 	public void setStatus(int status) {
 		this.status = status;
+	}
+	
+	
+
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((applicant == null) ? 0 : applicant.hashCode());
+		result = prime * result + applicationId;
+		long temp;
+		temp = Double.doubleToLongBits(cost);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((endingDate == null) ? 0 : endingDate.hashCode());
+		result = prime * result + ((location == null) ? 0 : location.hashCode());
+		result = prime * result + ((startingDate == null) ? 0 : startingDate.hashCode());
+		result = prime * result + status;
+		result = prime * result + ((submitedDate == null) ? 0 : submitedDate.hashCode());
+		result = prime * result + ((submitedTime == null) ? 0 : submitedTime.hashCode());
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Application other = (Application) obj;
+		if (applicant == null) {
+			if (other.applicant != null)
+				return false;
+		} else if (!applicant.equals(other.applicant))
+			return false;
+		if (applicationId != other.applicationId)
+			return false;
+		if (Double.doubleToLongBits(cost) != Double.doubleToLongBits(other.cost))
+			return false;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		if (endingDate == null) {
+			if (other.endingDate != null)
+				return false;
+		} else if (!endingDate.equals(other.endingDate))
+			return false;
+		if (location == null) {
+			if (other.location != null)
+				return false;
+		} else if (!location.equals(other.location))
+			return false;
+		if (startingDate == null) {
+			if (other.startingDate != null)
+				return false;
+		} else if (!startingDate.equals(other.startingDate))
+			return false;
+		if (status != other.status)
+			return false;
+		if (submitedDate == null) {
+			if (other.submitedDate != null)
+				return false;
+		} else if (!submitedDate.equals(other.submitedDate))
+			return false;
+		if (submitedTime == null) {
+			if (other.submitedTime != null)
+				return false;
+		} else if (!submitedTime.equals(other.submitedTime))
+			return false;
+		return true;
 	}
 
 

@@ -139,3 +139,34 @@ header{
   font-family:sans-serif;
   font-weight: bold;
 }
+
+
+/*------------Employeee Table-------------*/
+table{
+  margin:auto;
+  border-style: solid;
+  width: 50%;
+  text-align: center;
+  background-color:rgb(160, 145, 95);
+  border-collapse: collapse;
+  border-color: rgb(77, 76, 76);
+}
+
+thead > tr > td{
+  color:blue;
+  font-size: large;
+  font-weight: bolder;
+}
+
+td{
+  border-right:thin solid;
+  border-top: thin solid;
+  height: 40px;
+}
+
+/*---------Submit Reimbursement Form--------*/
+#descriptionArea{
+  width: 380px;
+  height: 200px;
+
+}

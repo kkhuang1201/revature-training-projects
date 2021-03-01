@@ -1,5 +1,6 @@
 package com.revature.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.revature.model.Application;
@@ -8,7 +9,7 @@ import com.revature.repository.ApplicationRepositoryImpl;
 
 public class ApplicationService {
 	
-	private static ApplicationRepository applicationRepository;
+	private ApplicationRepository applicationRepository;
 	
 	public ApplicationService() {
 		applicationRepository = new ApplicationRepositoryImpl();
@@ -37,8 +38,25 @@ public class ApplicationService {
 	public Application getApplicationById(int id) {
 		return this.applicationRepository.getApplication(id);
 	}
+	
+	
+	//Get applicant's all applications by applicant emplId
+	public List<Application> getAllByApplicant(int emplId) {
+		
+		List<Application> applications = this.applicationRepository.findAll();
+		applications.removeIf(a -> a.getApplicant().getEmpId() != emplId);
+		return applications;
+	}
+	
 
-
+	//Get applicant's all applications by applicant'd username
+		public List<Application> getAllByApplicant(String username) {
+			
+			List<Application> applications = this.applicationRepository.findAll();
+			applications.removeIf(a -> !(a.getApplicant().getUserName()).equals(username));
+			return applications;
+		}
+		
 	
 	
 	

@@ -68,6 +68,7 @@ public class ApplicationRepositoryImpl implements ApplicationRepository{
 		
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Application> findAll() {
 		List<Application> applications = new ArrayList<>();
