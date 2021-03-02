@@ -339,14 +339,16 @@ public class DispatcherServlet extends HttpServlet {
 				if(status.equals("Accept")) {
 					application.setStatus(2);
 					applicationService.update(application);
+					resp.sendRedirect("/TRMS/Pages/register_successfully.html");
 				}
 				if(status.equals("Reject")) {
 					application.setStatus(3);
 					applicationService.update(application);
+					resp.sendRedirect("/TRMS/Pages/register_successfully.html");
 				}
+			}else{
+				resp.sendRedirect("/TRMS/Pages/home.html");
 			}
-			
-			resp.sendRedirect("/TRMS/Pages/register_successfully.html");
 			
 			
 		}
