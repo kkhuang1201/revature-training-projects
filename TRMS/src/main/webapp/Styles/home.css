@@ -170,3 +170,47 @@ td{
   height: 200px;
 
 }
+
+/*--------Load All Reimbursement------------*/
+.collapsible{
+  background-color: rgb(252, 250, 250);
+  border: none;
+  border-radius: 0ex;
+}
+
+.active, .collapsible:hover{
+  background-color: rgb(255, 8, 0);
+}
+
+.content{
+  display: inline block;
+}
+
+#reimContentDiv{
+  display: block;
+  width: 382px;  
+  margin: auto;  
+  padding: 50px 100px;  
+  border-radius: 15px ; 
+}
+
+#reimContentDiv > label{
+  float: left;
+  color:black;
+}
+
+#reimContentDiv > p {
+  color:black
+}
+
+#reimContentDiv > input{
+  background-color: rgb(160, 145, 95);
+  border: none;
+  color: black;
+}
+
+#reimContentDiv >ul>li>a{
+  background-color: rgb(160, 145, 95);
+  border: none;
+  color: rgb(31, 15, 250);
+}

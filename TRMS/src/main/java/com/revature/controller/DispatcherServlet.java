@@ -60,7 +60,13 @@ public class DispatcherServlet extends HttpServlet {
 			break;
 		case "getMyApplications":
 			getMyReimbursements(req, resp);
+		case "getPendingApplications":
+			getPendingReimbursements(req,resp);
+		case "getAllApplications":
+			getAllReimbursements(req,resp);
+			break;
 		default:
+			manageReimbursements(req,resp,RESOURCE);
 
 		}
 
@@ -276,6 +282,73 @@ public class DispatcherServlet extends HttpServlet {
 		final String JSON = objectMapper.writeValueAsString(myApplications);
 		write.write(JSON);
 		System.out.println(JSON);
+		write.close();
 	}
+	
+	// Get pending reimbursement applications from database
+			protected void getPendingReimbursements(HttpServletRequest req, HttpServletResponse resp)
+					throws ServletException, IOException {
+				System.out.println("I am inside of getPendingReiBursement Servlet!");
+				HttpSession session = req.getSession();
+				PrintWriter write = resp.getWriter();
+
+				String username = (String) session.getAttribute("myUsername");
+				System.out.println(username);
+				List<Application> allApplications = applicationService.getAllPendindByManager(username);
+				System.out.println(allApplications);
+				ObjectMapper objectMapper = new ObjectMapper();
+				final String JSON = objectMapper.writeValueAsString(allApplications);
+				write.write(JSON);
+				System.out.println(JSON);
+				write.close();
+			}
+	
+	// Get all reimbursement applications from database
+		protected void getAllReimbursements(HttpServletRequest req, HttpServletResponse resp)
+				throws ServletException, IOException {
+			System.out.println("I am inside of getAllReiBursement Servlet!");
+			HttpSession session = req.getSession();
+			PrintWriter write = resp.getWriter();
+
+			String username = (String) session.getAttribute("myUsername");
+			System.out.println(username);
+			List<Application> allApplications = applicationService.getAllResolved();
+			System.out.println(allApplications);
+			ObjectMapper objectMapper = new ObjectMapper();
+			final String JSON = objectMapper.writeValueAsString(allApplications);
+			write.write(JSON);
+			System.out.println(JSON);
+			write.close();
+		}
+		
+		//update reimbursement's status after the manager made decision
+		protected void manageReimbursements(HttpServletRequest req, HttpServletResponse resp,String resouce)
+				throws ServletException, IOException {
+			System.out.println("I am inside of manageReiBursement Servlet!");
+			HttpSession session = req.getSession();
+			System.out.print(resouce);
+			
+			String[] tokens = resouce.split("-");
+			System.out.println(tokens[0]);
+			System.out.println(tokens[1]);
+			int appId = Integer.parseInt(tokens[1]);
+			String status = tokens[0];
+			
+			Application application = applicationService.getApplicationById(appId);
+			if(application != null) {
+				if(status.equals("Accept")) {
+					application.setStatus(2);
+					applicationService.update(application);
+				}
+				if(status.equals("Reject")) {
+					application.setStatus(3);
+					applicationService.update(application);
+				}
+			}
+			
+			resp.sendRedirect("/TRMS/Pages/register_successfully.html");
+			
+			
+		}
 
 }

@@ -50,14 +50,29 @@ public class ApplicationService {
 	
 
 	//Get applicant's all applications by applicant'd username
-		public List<Application> getAllByApplicant(String username) {
-			
-			List<Application> applications = this.applicationRepository.findAll();
-			applications.removeIf(a -> !(a.getApplicant().getUserName()).equals(username));
-			return applications;
-		}
-		
+	public List<Application> getAllByApplicant(String username) {
+
+		List<Application> applications = this.applicationRepository.findAll();
+		applications.removeIf(a -> !(a.getApplicant().getUserName()).equals(username));
+		return applications;
+	}
 	
+	
+	//Get all new application by manager's username
+	public List<Application> getAllPendindByManager(String username){
+		List<Application> pendingApplications = this.applicationRepository.findAll();
+		pendingApplications.removeIf(p -> p.getStatus() != 1);
+		pendingApplications.removeIf(p -> !(p.getApplicant().getSupervisor().getUserName()).equals(username));
+		return pendingApplications;
+	}
+	
+	// Get all new application by manager's username
+	public List<Application> getAllResolved() {
+		List<Application> resolvedApplications = this.applicationRepository.findAll();
+		resolvedApplications.removeIf(p -> p.getStatus() == 1);
+		return resolvedApplications;
+	}
+
 	
 	
 }

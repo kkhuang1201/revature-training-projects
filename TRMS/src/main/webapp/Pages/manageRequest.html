@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>TRMS HOME PAGE</title>
+	<link rel="stylesheet" href="../Styles/index.css" type="text/css">
+	<link rel="stylesheet" href="../Styles/home.css" type="text/css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+	<!------------------------------Nav bar-------------------->
+	<header>
+		<div class="navbar">
+			<a href="home.html">Home</a>
+			<div class="dropdown">
+				<button class="dropbtn">Reimbursement
+					<i class="fa fa-caret-down"></i>
+				</button>
+				<div class="dropdown-content">
+					<a href="submitNew.html">Submit New</a>
+					<a href="viewHistory.html">View History</a>
+					<a href="manageRequest.html" id="manageRequest">Manage Request</a>
+					<a href="viewResolvedRequest.html" id="viewResolvedRequest">View Resolved Request</a>
+				</div>
+			</div>
+			<a href="register.html" id="register">Register New Employee</a>
+			<a href="viewAllEmployees.html" id="viewEmployees">View Employees</a> 
+			<div class="dropdown" id="dropdownaccount">
+				<button class="dropbtn" id="accountname">Account
+					<i class="fa fa-caret-down"></i>
+				</button>
+				<div class="dropdown-content">
+					<a href="profile.html" id=profileBtn>Profile</a>
+					<a href="../index.html">Logout</a>
+
+				</div>
+			</div>
+		</div>
+	</header>
+	<div class="dashboard">
+		<h1>Dashboard</h1>
+		<h3 id="title">Title</h3>
+	</div>
+	<!------------------------------View Pending Reimbursements-------------------->
+    <br><br>
+	<h2>Manage Submitted Reimbursements</h2>
+	<br><br>
+    <div id = "pendingReimTableDiv">
+        <table id="pendingReimTable">
+            <thead id="pendingReimTableHeader">
+                <tr>
+                    <td>Id</td>
+					<td>Applicant</td>
+                    <td>Amount</td>
+                    <td>Time Submitted</td>
+					<td>Status</td>       
+                </tr>
+            </thead>  
+            <tbody id="pendingReimTableData">
+            </tbody> 
+        </table>
+    </div>
+    
+	<script type="text/javascript" src="../JavaScript/home.js"></script>
+
+</body>
+
+</html>
