@@ -186,7 +186,7 @@ td{
   display: inline block;
 }
 
-#reimContentDiv{
+.reimContentDiv{
   display: block;
   width: 382px;  
   margin: auto;  
@@ -194,22 +194,41 @@ td{
   border-radius: 15px ; 
 }
 
-#reimContentDiv > label{
+.reimContentDiv > label{
   float: left;
   color:black;
 }
 
-#reimContentDiv > p {
+.reimContentDiv > p {
   color:black
 }
 
-#reimContentDiv > input{
+.reimContentDiv > input{
+  float: right;
   background-color: rgb(160, 145, 95);
   border: none;
   color: black;
 }
 
-#reimContentDiv >ul>li>a{
+.reimContentDiv > textarea{
+  float: right;
+  background-color: rgb(160, 145, 95);
+  color: black;
+  border: none;
+}
+
+.reimContentDiv ul{
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reimContentDiv li{
+  margin: auto;
+}
+
+.reimContentDiv >ul>li>a{
   background-color: rgb(160, 145, 95);
   border: none;
   color: rgb(31, 15, 250);

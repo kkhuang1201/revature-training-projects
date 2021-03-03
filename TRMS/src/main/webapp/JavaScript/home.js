@@ -141,7 +141,7 @@ function loadEmployees(){
 
 function loadMyApplications(){
     console.log('I am inside of loadMyapplications')
-    let url = 'http://localhost:8080/TRMS/api/getMyApplications'
+    let url = ' http://localhost:8080/TRMS/api/getMyApplications'
     let tbody = document.getElementById('myReimTableData')
     console.log(tbody)
     if(tbody){
@@ -235,7 +235,7 @@ function loadAllApplications(){
                     let appManager = a['applicant']['supervisor']['firstName'] + ' ' + a['applicant']['supervisor']['lastName']
 
                     //Fill out td elements with the data
-                    let idHtml = `<button class="collapsible" onclick="displayContent()" >${appId}</button>`
+                    let idHtml = `<button id="${appId}" class="collapsible" onclick="displayContent(this.id)" >${appId}</button>`
                     id.innerHTML = idHtml
                     applicant.innerHTML =applicantName
                     amount.innerHTML = appCost
@@ -250,7 +250,7 @@ function loadAllApplications(){
 
                     /*Write html to ormat reimbursement content*/
                     let contentHtml = 
-                    `<div class="allForm" id="reimContentDiv">
+                    `<div class="reimContentDiv" id="reimContentDiv${appId}" style="display:none">
                     <h2>Tuition Reimbursement Form</h2>
                     <br><br>
                     <label ><b>Applicant:</b></label>
@@ -346,7 +346,7 @@ function loadPendingApplications(){
                     
 
                     //Fill out td elements with the data
-                    let idHtml = `<button class="collapsible" onclick="displayContent()" >${appId}</button>`
+                    let idHtml = `<button class="collapsible" id="${appId}" onclick="displayContent(this.id)" >${appId}</button>`
                     id.innerHTML = idHtml
                     applicant.innerHTML =applicantName
                     amount.innerHTML = appCost
@@ -362,7 +362,7 @@ function loadPendingApplications(){
 
                     /*Write html to ormat reimbursement content*/
                     let contentHtml = 
-                    `<div class="allForm" id="reimContentDiv">
+                    `<div class="reimContentDiv" id="reimContentDiv${appId}" style="display:none">
                     <h2>Tuition Reimbursement Form</h2>
                     <br><br>
                     <label ><b>Applicant:</b></label>
@@ -432,20 +432,20 @@ window.onload = () => {
    
 }
 
-function displayContent(){
-// var coll = document.getElementsByClassName("collapsible")
-    // console.log(coll)
-    // console.log(coll[0])
-    // if (coll) {
-    //     this.classList.toggle("active");
-    //     var c = this.nextElementSibling
-    //     console.log(c)
-    //     if (c.style.display == "block") {
-    //         c.style.display = "none"
-    //     } else {
-    //         c.style.display = "block"
-    //     }
-    // }
+function displayContent(app_id) {
+    var b = document.getElementById(`${app_id}`)
+    console.log(b)
+    var coll = document.getElementById(`reimContentDiv${app_id}`)
+    console.log(coll)
+    if (coll) {
+        b.classList.toggle("active");
+        console.log(coll)
+        if (coll.style.display == "block") {
+            coll.style.display = "none"
+        } else {
+            coll.style.display = "block"
+        }
+    }
 }
 
 
