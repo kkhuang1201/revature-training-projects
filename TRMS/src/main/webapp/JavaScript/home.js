@@ -170,7 +170,7 @@ function loadMyApplications(){
                     submitTime.innerHTML = d + ' ' + a['submitedTime']
                     if(a['status'] == 1){
                         status.innerHTML = 'Pending'
-                    }else if(a['status' == 2]){ 
+                    }else if(a['status'] == 2){ 
                         status.innerHTML = 'Accepted'
                     }else{ 
                         status.innerHTML = 'Rejected'
