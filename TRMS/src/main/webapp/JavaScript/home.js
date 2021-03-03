@@ -28,7 +28,7 @@ function loadProfile(){
 
     }
 
-    xhr.open('GET', 'http://localhost:8080/TRMS/api/loadHomePage')
+    xhr.open('GET', 'http:/http://52.14.14.16/:8080/TRMS/api/loadHomePage')
     xhr.send()
     
 
