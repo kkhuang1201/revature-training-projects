@@ -28,7 +28,7 @@ function loadProfile(){
 
     }
 
-    xhr.open('GET', 'http://52.14.14.16:8080/TRMS/api/loadHomePage')
+    xhr.open('GET', 'http://52.14.14.16:8088/TRMS/api/loadHomePage')
     xhr.send()
     
 
@@ -75,14 +75,14 @@ function displayName() {
 
     }
 
-    xhr.open('GET', 'http://52.14.14.16:8080/TRMS/api/loadHomePage')
+    xhr.open('GET', 'http://52.14.14.16:8088/TRMS/api/loadHomePage')
     xhr.send()
 }
 
 
 function loadEmployees(){
     console.log('I am inside of loadEmployees')
-    let url = 'http://52.14.14.16:8080/TRMS/api/getEmployees'
+    let url = 'http://52.14.14.16:8088/TRMS/api/getEmployees'
     let tbody = document.getElementById('emplTableData')
     console.log(tbody)
     if(tbody){
@@ -141,7 +141,7 @@ function loadEmployees(){
 
 function loadMyApplications(){
     console.log('I am inside of loadMyapplications')
-    let url = ' http://52.14.14.16:8080/TRMS/api/getMyApplications'
+    let url = ' http://52.14.14.16:8088/TRMS/api/getMyApplications'
     let tbody = document.getElementById('myReimTableData')
     console.log(tbody)
     if(tbody){
@@ -195,7 +195,7 @@ function loadMyApplications(){
 
 function loadAllApplications(){
     console.log('I am inside of loadAllapplications')
-    let url = 'http://52.14.14.16:8080/TRMS/api/getAllApplications'
+    let url = 'http://52.14.14.16:8088/TRMS/api/getAllApplications'
     let tbody = document.getElementById('allReimTableData')
     console.log(tbody)
     if(tbody){
@@ -306,7 +306,7 @@ function loadAllApplications(){
 
 function loadPendingApplications(){
     console.log('I am inside of loadPendingapplications')
-    let url = 'http://52.14.14.16:8080/TRMS/api/Pages/getPendingApplications'
+    let url = 'http://52.14.14.16:8088/TRMS/api/Pages/getPendingApplications'
     let tbody = document.getElementById('pendingReimTableData')
     console.log(tbody)
     if(tbody){
@@ -387,8 +387,8 @@ function loadPendingApplications(){
                     <textarea id="descriptionArea" name="description" disabled>${appDescription}</textarea>
                     <br><br><br><br><br><br>
                     <ul>
-                        <li><a href="http://52.14.14.16:8080/TRMS/api/Accept-${appId}">Approve</a></li>
-                        <li><a href="http://52.14.14.16:8080/TRMS/api/Reject-${appId}">Deny</a></li>
+                        <li><a href="http://52.14.14.16:8088/TRMS/api/Accept-${appId}">Approve</a></li>
+                        <li><a href="http://52.14.14.16:8088/TRMS/api/Reject-${appId}">Deny</a></li>
                     </ul>   
                      </div>`
                     
