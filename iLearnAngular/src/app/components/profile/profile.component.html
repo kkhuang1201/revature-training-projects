@@ -1,0 +1,52 @@
+<!--@author kenny Huang-->  
+<div class="container" id="container">
+	<div class="form-container sign-in-container">
+		<form class = viewProfile>
+			<h1 class="profile">Profile</h1>
+            <br><br>
+            <label>Fisrt Name: </label>
+            <input disabled  placeholder={{loggedInUser.first_name}}/>
+            <label >Last Name: </label>
+            <input disabled  placeholder={{loggedInUser.last_name}}/>
+            <label>Email: </label>
+            <input disabled  placeholder="{{loggedInUser.email}}"/>
+		</form>
+	</div>
+	<div class="form-container sign-up-container">
+		<form>
+            <br><br>
+            <label>First Name: </label>
+			<input [(ngModel)] = "loggedInUser.first_name" type="text" placeholder="First Name" name="first_name" />
+            <label>Last Name: </label>
+            <input [(ngModel)] = "loggedInUser.last_name" type="text" placeholder="Last Name" name="last_name" />
+            <label>Email: </label>
+			<input [(ngModel)] = "loggedInUser.email" type="email" placeholder="Email" name="email"/>
+            <label>Password: </label>
+			<input [(ngModel)] = "loggedInUser.user_password" type="password" placeholder="Password" name="user_password"/>
+            <br><br>
+			<button (click)="update()" >Update</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Your Profile</h1>
+				<p></p>
+				<button class="ghost" id="signIn" (click)="removeActiveContainer()">View</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Hello, {{loggedInUser.first_name}}!</h1>
+				<p>You can click button bellow to edit your profile</p>
+				<button class="ghost" id="signUp" (click)="addActiveContainer()">Edit</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer>
+	<p>
+		Created by Kenny, Jason and Christian.
+	</p>
+</footer>
+
+

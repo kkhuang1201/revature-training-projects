@@ -1,0 +1,31 @@
+<header>
+    <h1>My Create Lesson</h1>
+</header>
+<body>
+
+
+<div class = "courseForm" id = "courseForm">
+    <div class = "courseFormDisplay" id = "courseFormDisplay">
+    <form class="form-container"> 
+        <h1>New Lesson</h1>
+        <label >Lesson Title</label>
+        <input [(ngModel)] ="newLesson.title" type="text" id="lessontitle" name="lessontitle"> <br>
+
+        <label >Course ID</label>
+        <input [(ngModel)] ="newLesson.courseid" type="number" id="courseid" name="courseid"> <br>
+
+</form>
+<form [formGroup]="lessonForm" (ngSubmit)="createObject()" class="form-container">
+        <label >Choose a File</label>
+        <input (change)="onFileSelect($event)" type="file" id="file" name="file"> <br>
+         <button type="submit" class="btn" id="createLessonButton">Upload File</button>
+</form>
+       
+
+
+
+    </div>
+    
+</div>
+</body>
+

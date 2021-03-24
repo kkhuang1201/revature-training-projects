@@ -1,0 +1,28 @@
+<head>
+</head>
+<header>
+    <h1>Discussion Board</h1>
+</header>
+<body>
+
+    <div class="discussionBoard">
+        <div class="messageDisplay" id="messageDisplay">
+            <div class="comment" *ngFor="let c of comments">
+                <h2>{{c.author.first_name}} {{c.author.last_name}}:      <span class="time">{{c.comment_date}}</span></h2>    
+                <p>{{c.comment}}</p>
+                <p>-------------------------------------------------------------------</p>
+            </div>
+
+        </div>
+        <div class="postbox" id="postbox">
+            <form action="" class="form-container">
+                <textarea [(ngModel)] = "comment.comment" placeholder="{{text}}" name="comment" required></textarea>
+                <button (click) = 'makeComment()' class="btn">Post Comment</button>
+            </form>
+        </div>
+    </div>
+
+
+
+
+</body>

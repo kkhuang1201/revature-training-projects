@@ -1,0 +1,85 @@
+* {box-sizing: border-box;}
+header{
+    text-align: center;
+    width: 1000px;
+    background-color: rgb(243, 241, 220);
+    margin: auto;
+    border-radius: 0.5em;
+}  
+.courseForm{
+    margin: auto;
+    width: 1000px;
+    height:100%;
+}
+
+.courseFormDisplay {
+    padding: 10px;
+    overflow-y:scroll;
+    overflow-x: scroll;
+    scroll-margin-bottom: 0;
+    height: 500px;
+    background-color:rgb(187, 209, 235);
+  }
+
+.course{
+    padding: 1px;
+}
+
+span{
+    font-size:small;
+    color: red;
+}
+
+h2{
+    color: rgb(28, 0, 128);
+}
+
+
+  
+  
+  .searchchbox {
+    display: block;
+    border: 3px solid #f1f1f1;
+
+  }
+  
+  
+  .form-container {
+    padding: 10px;
+    background-color: white;
+  }
+  
+ 
+  .form-container input {
+    width: 100%;
+    padding: 15px;
+    margin:auto;
+    border: none;
+    background: #f1f1f1;
+    resize: none;
+  }
+  
+ 
+  .form-container input:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+ 
+  .form-container .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+  }
+ 
+  .createLessonButton{
+      background-color: rgb(251, 255, 255);
+      border-radius: 0.5em;
+      border-style: none;
+      color: rgb(12, 12, 12);
+  }

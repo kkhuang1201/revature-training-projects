@@ -1,0 +1,111 @@
+<header>
+    <h1>My Created Courses</h1>
+</header>
+
+<body>
+
+    <div class="courseList">
+        <div class="courseDisplay" id="courseDisplay">
+            <div class="course">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>#</td>
+                            <td>Title</td>
+                            <td>Public Access</td>
+                            <td>Access Code</td>
+                            <td>Students</td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let c of myCourses; let i = index">
+                        <tr>
+                            <td> {{i + 1}} </td>
+                            <td> <button (click)="changeEditCourseVisibility(c.courseid)" class="titleBtn"> {{c.title}}
+                                </button> </td>
+                            <td>{{c.public_access}}</td>
+                            <td>{{c.access_code}}</td>
+                            <td>{{c.number_enrolled}}</td>
+                            <td> <button (click)="deleteCourse(c.courseid)" class="deteleBtn">Delete</button> </td>
+                        </tr>
+                        <tr>
+                            <th colspan="6">
+                                <div class="editForm" id="editForm{{c.courseid}}" style="display:none">
+                                    <div class="courseContent">
+                                        <div > 
+                                            <form>
+                                                <label>Description</label><br>
+                                                <textarea [(ngModel)]="c.description" type="text"  name="description" disabled></textarea><br>
+                                                <label *ngIf= "c.public_access; else els" >Public</label><br>
+                                                <ng-template #els>Private</ng-template><br>
+                                            </form>    
+                                        </div>
+                                        <div class="displayLessons">
+                                            <ol>
+                                                <li *ngFor="let l of lessons"><a href="{{l.file_location}} "
+                                                        target="_blank"> {{l.title}} </a></li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                    <div class="editCourse">
+                                        <p>------------------Edit Course---------------------</p>
+                                        <form>
+                                            <label>Title</label>
+                                            <input [(ngModel)]="getCourse.title" type="text" name="title" /><br>
+                                            <label>Description</label>
+                                            <input [(ngModel)]="getCourse.description" type="text"
+                                                name="description" /><br>
+                                            <label>Public Access</label>
+                                            <input [(ngModel)]="getCourse.public_access" type="checkbox"
+                                                name="access" /><br>
+
+                                            <button (click)="showAddLessonForm(getCourse.courseid)" type="submit" id="addLessonBtn">Add New Lesson</button>
+                                            <div *ngIf = "showNewLessonForm" class="editForm" id="editForm{{c.courseid}}" >
+                                                <form>
+                                                    <label>Course Id</label>
+                                                    <input [(ngModel)] ="newLesson.courseid" value="{{getCourse.courseid}}" type="number" id="courseid" name="courseid"> 
+                                                    <label>Lesson Title</label>
+                                                    <input type="text" id="lessontitle" name="lessontitle"> <br>
+                                                </form>
+                                                <form  class="form-container">
+                                                    <label>Choose a File</label>
+                                                    <input type="file" id="file" name="file"> <br>
+                                                    <button type="submit" id="createLessonButton">Upload
+                                                        File</button>
+                                                </form>
+                                            </div>
+
+                                            <button (click)="editCourse(c.courseid)" class="submit">Execute
+                                                Update</button>
+                                        </form>
+
+
+                                    </div>
+
+
+                                </div>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <button class="displayForm" (click)="changeCourseVisibility()">Create New Course</button>
+        <div class="courseDisplay" id="courseSubmit">
+            <form class="editForm" *ngIf = "visibility">
+                <label>Title</label>
+                <input [(ngModel)]="newCourse.title" type="text" name="title" /><br>
+                <label>Description</label>
+                <input [(ngModel)]="newCourse.description" type="text" name="description" /><br>
+                <label>Public Access</label>
+                <input [(ngModel)]="newCourse.public_access" type="checkbox" name="access" /><br>
+                <label>Date Created</label>
+                <input [(ngModel)]="newCourse.date_created" type="date" name="datecreation" /><br>
+                <label>Access Code</label>
+                <input [(ngModel)]="newCourse.access_code" type="text" name="accesscode" /><br>
+                <button (click)="addCourse()" class="submit">Comfirm</button>
+            </form>
+        </div>
+    </div>
+</body>

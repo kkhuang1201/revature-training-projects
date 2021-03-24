@@ -1,0 +1,64 @@
+<header>
+    <h1>All available courses</h1>
+</header>
+<body>
+
+    <div class="courseList">
+        <div class="courseDisplay" id="courseDisplay">
+            <div class="course">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>#</td>
+                            <td>Title</td>
+                            <td>Creator</td>
+                            <td>Students</td>
+                            <td>Date created</td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let c of courses; let i = index">
+                        <tr *ngIf= "c.public_access">
+                            <td> {{ i+1 }} </td>
+                            <td> <button (click) = "viewContent(c.courseid)" class="titleBtn">{{c.title}}</button> </td>
+                            <td> {{c.creator.first_name}} {{c.creator.last_name}}</td>
+                            <td> {{c.number_enrolled}} </td>
+                            <td> {{c.date_created}} </td>
+                            <td> <button *ngIf = (!isSame(c.creator.userid)) class="enrollBtn" (click) = "enroll(c.courseid)">Enroll</button> </td>
+                        </tr>
+                        <tr>
+                            <th colspan="6">
+                                <div class="form-container" id = "form-container{{c.courseid}}" style="display: none;">
+                                    <div > 
+                                        <form>
+                                            <label>Description</label><br>
+                                            <textarea [(ngModel)]="c.description" type="text"  name="description" disabled></textarea><br>
+                                            <label *ngIf= "c.public_access; else els" >Public</label><br>
+                                            <ng-template #els>Private</ng-template><br>
+                                        </form>    
+                                    </div>
+                                    <div class="courseContent">
+                                        <div class="displayLessons">
+                                            <ol>
+                                                <li *ngFor = "let l of lessons"><a href ="{{l.file_location}} " target="_blank"> {{l.title}} </a></li>
+                                            </ol>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </th> 
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <!-- <div class="searchbox" id="searchbox">
+            <form action="" class="form-container">
+                <input placeholder="Enter course title...." name="search" required>
+                <button class="btn">Search</button>
+            </form>
+        </div> -->
+    </div>
+</body>
+

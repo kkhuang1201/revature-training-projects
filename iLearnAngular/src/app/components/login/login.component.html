@@ -1,0 +1,47 @@
+<!--@author kenny Huang-->
+
+	<h2>Welcome to iLearn!</h2>
+	<div class="about">
+		<p> iLearn is the social media platform for any aspiring intellectual.
+			In iLearn, unique courses and discussion pages will be created for any and all
+			that want to teach others. Users can search, follow,
+			and of course learn from their favorite content creators.
+		</p>
+	</div>
+
+	<div class="container" id="container">
+		<div class="form-container sign-up-container">
+			<form>
+				<h1>Sign up</h1>
+				<input [(ngModel)]="newUser.first_name" type="text" placeholder="First Name" name="first_name" />
+				<input [(ngModel)]="newUser.last_name" type="text" placeholder="Last Name" name="last_name" />
+				<input [(ngModel)]="newUser.email" type="email" placeholder="Email" name="email" />
+				<input [(ngModel)]="newUser.user_password" type="password" placeholder="Password"
+					name="user_password" />
+				<button (click)="register()">Sign Up</button>
+			</form>
+		</div>
+		<div class="form-container sign-in-container">
+			<form>
+				<h1>Sign in</h1>
+				<input [(ngModel)]="email" type="email" placeholder="Email" name="email" />
+				<input [(ngModel)]="password" type="password" placeholder="Password" name="password" />
+				<a href="#">Forgot your password?</a>
+				<button (click)="checkLogin()">Sign In</button>
+			</form>
+		</div>
+		<div class="overlay-container">
+			<div class="overlay">
+				<div class="overlay-panel overlay-left">
+					<h1>Welcome Back!</h1>
+					<p>Please login to start exploring world of knowledge !</p>
+					<button class="ghost" id="signIn" (click)="removeActiveContainer()">Sign In</button>
+				</div>
+				<div class="overlay-panel overlay-right">
+					<h1>Hello, Friend!</h1>
+					<p>Please sign up and start journey with us</p>
+					<button class="ghost" id="signUp" (click)="addActiveContainer()">Sign Up</button>
+				</div>
+			</div>
+		</div>
+	</div>
